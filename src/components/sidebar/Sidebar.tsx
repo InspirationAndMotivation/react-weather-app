@@ -34,6 +34,10 @@ const Sidebar = () => {
   const onHandleSwitchChange = () => {
     setIsCelsius(!isCelsius);
   };
+  const getTime = (unixDate: number, unixTimezone: number) => {
+    const time = new Date(new Date(unixDate * 1000 - unixTimezone));
+    return `${time.getHours()}:${time.getMinutes()}`;
+  };
 
   return (
     <div className="Sidebar">
@@ -62,7 +66,10 @@ const Sidebar = () => {
               alt="Sunrise Time"
               className="Icon"
             ></img>
-            <p className="TimeData">7:19</p>
+            <p className="TimeData">{`${getTime(
+              weather.sys.sunrise,
+              weather.timezone
+            )}`}</p>
           </div>
         </div>
         <div className="RowData">
@@ -75,15 +82,15 @@ const Sidebar = () => {
               alt="Sunset Time"
               className="Icon"
             ></img>
-            <p className="TimeData">19:19</p>
+            <p className="TimeData">{`${getTime(
+              weather.sys.sunset,
+              weather.timezone
+            )}`}</p>
           </div>
         </div>
       </div>
       <div className="WeatherData">
-        <p className="TempData">
-          {getTemp()}
-          {isCelsius ? `°C` : `°K`}
-        </p>
+        <p className="TempData">{`${getTemp()}°`}</p>
         <div className="WeatherConditions">
           <img
             src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}

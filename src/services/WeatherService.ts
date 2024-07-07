@@ -7,8 +7,8 @@ export class WeatherService {
     return api.get<Weather>(`weather?q=${city}`);
   }
   static getTodayWeatherByCoords(
-    latitude: string,
-    longitude: string
+    latitude: number,
+    longitude: number
   ): Promise<AxiosResponse<Weather>> {
     return api.get<Weather>(`weather?lat=${latitude}&lon=${longitude}`);
   }

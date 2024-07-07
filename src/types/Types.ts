@@ -49,6 +49,10 @@ export type Weather = {
 };
 
 export type Coords = {
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
+};
+
+export type Position = {
+  coords: Coords;
 };
