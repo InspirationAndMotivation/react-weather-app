@@ -1,0 +1,35 @@
+@import url('./theme/theme.css');
+body {
+  font-family: 'MonaSans', Fallback, sans-serif;
+}
+
+.App {
+  flex-direction: row;
+  text-align: center;
+  display: flex;
+  overflow: hidden;
+  height: 100vh;
+
+  .Sidebar {
+    flex: 20%;
+    background-color: var(--blue);
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+
+  .Widget {
+    flex: 80%;
+    background-color: var(--light-blue);
+    padding: 1.5rem;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}

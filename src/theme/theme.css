@@ -1,0 +1,17 @@
+:root {
+  --blue: #5e9ce5;
+  --light-blue: #e3f1fc;
+  --teal: #69a7a4;
+  --white: #ffffff;
+  --black: #141414;
+}
+
+@font-face {
+  font-family: 'MonaSans';
+  src: url('../../public/fonts/MonaSans.woff2')
+      format('woff2 supports variations'),
+    url('../../public/fonts/MonaSans-Bold.woff2') format('woff2-bold'),
+    url('../../public/fonts/MonaSans-ExtraBold.woff2') format('woff2-extrabold'),
+    url('../../public/fonts/MonaSans-Italic.woff2') format('woff2-italic'),
+    url('../../public/fonts/MonaSans-Light.woff2') format('woff2-light');
+}

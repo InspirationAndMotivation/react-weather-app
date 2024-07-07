@@ -1,0 +1,12 @@
+.Widget {
+  p {
+    text-align: left;
+  }
+
+  .WidgetTable {
+    display: grid;
+    justify-items: center;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,76 @@
+.Sidebar {
+  min-width: 360px;
+  color: whitesmoke;
+
+  .Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .Search {
+      width: 70%;
+    }
+
+    .TempUnitsSwitch {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-weight: bold;
+
+      .TempUnits {
+        margin: -5px;
+      }
+    }
+  }
+  .LocationData {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8rem;
+
+    .Icon {
+      width: 30px;
+      padding-bottom: 0.55rem;
+    }
+
+    .RowData {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.35rem;
+      line-height: 0.35rem;
+    }
+  }
+  .WeatherData {
+    color: whitesmoke;
+
+    .TempData {
+      font-size: 4.5rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    .WeatherConditions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    p {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  }
+
+  .WeatherImage img {
+    position: absolute;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .TimeData {
+    width: 2.5rem;
+    justify-content: flex-start;
+  }
+}
