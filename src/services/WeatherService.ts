@@ -12,4 +12,13 @@ export class WeatherService {
   ): Promise<AxiosResponse<Weather>> {
     return api.get<Weather>(`weather?lat=${latitude}&lon=${longitude}`);
   }
+  static getWeatherForFewHoursByCoords(
+    latitude: number,
+    longitude: number,
+    cnt: number
+  ): Promise<AxiosResponse<Weather>> {
+    return api.get<Weather>(
+      `weather?lat=${latitude}&lon=${longitude}&cnt=${cnt}`
+    );
+  }
 }

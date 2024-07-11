@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Sidebar.scss';
 import Search from '../search/Search';
 import NearMeOutlinedIcon from '@mui/icons-material/NearMeOutlined';
-import { useCustomSelector } from '../../hooks/store';
-import { selectTodayWeatherData } from '../../selectors';
-import { Switch } from '@mui/material';
+import { useCustomDispatch, useCustomSelector } from '../../hooks/store';
+import {
+  selectCoords,
+  selectTodayWeatherData,
+  selectUnits,
+} from '../../selectors';
+import { fetchToggleUnits } from '../../slices/unitsChangingSlice';
+import { Button, Switch } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { fetchCoords } from '../../slices/coordsSlice';
+import { fetchTodayWeatherByCoords } from '../../store/thunks/fetchTodayWeather';
 
 const Sidebar = () => {
+  const dispatch = useCustomDispatch();
   const { weather } = useCustomSelector(selectTodayWeatherData);
-  const [isCelsius, setIsCelsius] = useState(true);
+  const { coords } = useCustomSelector(selectCoords);
+  const { mode } = useSelector(selectUnits);
+  const isCelsius = mode === 'Celsius';
 
   const handleOnSearchChange = (searchData: any) => {
     console.log(searchData);
@@ -25,15 +37,36 @@ const Sidebar = () => {
 
   const getTemp = () => {
     return Math.round(
-      isCelsius ? toCelsius(weather.main.temp) : weather.main.temp
+      isCelsius ? toCelsius(weather.main.temp) : toFahrenheit(weather.main.temp)
     );
   };
+
   const toCelsius = (temp: number) => {
+    // Formula of converting from API's Kelvins to Celsius
     return Math.round(temp - 273.15);
   };
-  const onHandleSwitchChange = () => {
-    setIsCelsius(!isCelsius);
+
+  const toFahrenheit = (temp: number) => {
+    // Formula of converting from API's Kelvins to Fahrenheit
+    return Math.round(1.8 * (temp - 273.15) + 32);
   };
+
+  const onHandleSwitchChange = () => {
+    dispatch(fetchToggleUnits());
+  };
+
+  const onHandleSetLocationClick = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        dispatch(fetchCoords(position));
+      });
+    }
+  };
+
+  useEffect(() => {
+    dispatch(fetchTodayWeatherByCoords(coords));
+  }, [coords]);
+
   const getTime = (unixDate: number, unixTimezone: number) => {
     const time = new Date(new Date(unixDate * 1000 - unixTimezone));
     return `${time.getHours()}:${time.getMinutes()}`;
@@ -44,7 +77,7 @@ const Sidebar = () => {
       <div className="Header">
         <Search onSearchChange={handleOnSearchChange}></Search>
         <div className="TempUnitsSwitch">
-          <p>°K</p>
+          <p>°F</p>
           <Switch
             checked={isCelsius}
             onChange={onHandleSwitchChange}
@@ -57,7 +90,12 @@ const Sidebar = () => {
       <div className="LocationData">
         <div className="RowData">
           <div className="RowData">
-            <NearMeOutlinedIcon></NearMeOutlinedIcon>
+            <Button
+              className="LocationButton"
+              onClick={onHandleSetLocationClick}
+            >
+              {<NearMeOutlinedIcon></NearMeOutlinedIcon>}
+            </Button>
             <p>{`${weather.name}, ${weather.sys.country}`}</p>
           </div>
           <div className="RowData">

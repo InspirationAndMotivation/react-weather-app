@@ -48,6 +48,12 @@ export type Weather = {
   cod: number;
 };
 
+export type CoordAndNumberOfTimestamps = {
+  latitude: number;
+  longitude: number;
+  cnt: number;
+};
+
 export type Coords = {
   latitude: number;
   longitude: number;
@@ -55,4 +61,23 @@ export type Coords = {
 
 export type Position = {
   coords: Coords;
+};
+
+export type CardData = {
+  title: string;
+  value: number;
+  graphtype: string;
+  unitsign: string;
+};
+
+export type DescriptionType = {
+  descriptionType: string;
+  value: number;
+};
+
+export type DescriptionData = {
+  name: string;
+  desc: string;
+  min: number;
+  max: number;
 };

@@ -6,16 +6,18 @@ import { loadOptions } from '../../loadOptions';
 import { fetchTodayWeatherByCoords } from '../../store/thunks/fetchTodayWeather';
 import { Coords, Position } from '../../types/Types';
 import { setKey, setLanguage } from 'react-geocode';
-import { selectTodayWeatherData } from '../../selectors';
+// import { selectTodayWeatherData } from '../../selectors';
 
 const Search: React.FC<any> = ({ onSearchChange }) => {
+  const dispatch = useCustomDispatch();
   const [query, setQuery] = useState(null);
-  const [location, setLocation] = useState(null);
+  // const [location, setLocation] = useState(null);
+  // const { latitude, longitude } = useCustomSelector(selectCoords);
+
   const [coords, setCoords] = useState<Coords>({
     latitude: 35,
     longitude: -80,
   });
-  const dispatch = useCustomDispatch();
 
   const handleOnChange = (searchData: any) => {
     setQuery(searchData);
@@ -50,16 +52,16 @@ const Search: React.FC<any> = ({ onSearchChange }) => {
   }
 
   useEffect(() => {
-    getInitialData();
-  }, []);
+    const fetchData = async () => {
+      await getInitialData();
+    };
+
+    fetchData();
+  }, [navigator.geolocation]);
 
   useEffect(() => {
     dispatch(fetchTodayWeatherByCoords(coords));
   }, [coords]);
-
-  // useEffect(() => {
-  //   console.log(coords);
-  // }, [coords]);
 
   return (
     <div className="Search">
