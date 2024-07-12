@@ -38,7 +38,7 @@ const ChartCard = () => {
       </div>
       <LineChart
         className="WeatherChart"
-        width={1400}
+        width={1300}
         height={170}
         series={[
           {

@@ -11,16 +11,17 @@ body {
   overflow: hidden;
   height: 100vh;
 
-  .Sidebar {
+  .Sidebar,
+  .RightBar {
     flex: 20%;
     background-color: var(--blue);
-    padding: 1.5rem 1.5rem 0 1.5rem;
+    padding: 0.5rem 1.5rem;
   }
 
   .Widget {
-    flex: 80%;
+    flex: 60%;
     background-color: var(--light-blue);
-    padding: 1.5rem;
+    padding: 0.5rem 1.5rem;
   }
 }
 
