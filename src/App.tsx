@@ -3,6 +3,7 @@ import Sidebar from './components/sidebar/Sidebar';
 import Widget from './components/widget/Widget';
 import { theme } from './theme/theme';
 import './App.scss';
+import RightBar from './components/rightBar/RightBar';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <div className="App">
         <Sidebar></Sidebar>
         <Widget></Widget>
+        <RightBar></RightBar>
       </div>
     </ThemeProvider>
   );

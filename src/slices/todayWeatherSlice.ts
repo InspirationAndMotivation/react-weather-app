@@ -7,13 +7,13 @@ type Response = {
   message: string;
 };
 
-type todayWeather = {
+type TodayWeather = {
   weather: Weather;
   isLoading: boolean;
   response: Response;
 };
 
-const initialState: todayWeather = {
+const initialState: TodayWeather = {
   weather: {
     coord: {
       lon: 0,
@@ -78,6 +78,9 @@ export const todayWeatherSlice = createSlice({
       state.isLoading = true;
     },
     fetchTodayWeatherByCoords(state) {
+      state.isLoading = true;
+    },
+    fetchWeatherForFewHoursByCoords(state) {
       state.isLoading = true;
     },
     fetchTodayWeatherSuccess(
