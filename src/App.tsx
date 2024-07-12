@@ -4,6 +4,7 @@ import Widget from './components/widget/Widget';
 import { theme } from './theme/theme';
 import './App.scss';
 import RightBar from './components/rightBar/RightBar';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Widget></Widget>
         <RightBar></RightBar>
       </div>
+      <Footer></Footer>
     </ThemeProvider>
   );
 }
