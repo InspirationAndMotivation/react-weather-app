@@ -13,7 +13,10 @@ import { Button, Switch } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { fetchCoords } from '../../slices/coordsSlice';
-import { fetchTodayWeatherByCoords } from '../../store/thunks/fetchTodayWeather';
+import {
+  fetchTodayWeatherByCity,
+  fetchTodayWeatherByCoords,
+} from '../../store/thunks/fetchTodayWeather';
 
 const Sidebar = () => {
   const dispatch = useCustomDispatch();
@@ -23,7 +26,7 @@ const Sidebar = () => {
   const isCelsius = mode === 'Celsius';
 
   const handleOnSearchChange = (searchData: any) => {
-    console.log(searchData);
+    dispatch(fetchTodayWeatherByCity(searchData.label));
   };
 
   const getDate = () => {
