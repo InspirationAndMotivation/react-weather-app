@@ -1,5 +1,6 @@
 {
   "name": "react-weather-app",
+  "author": "Anastasiia 'Paprika' Pranovych",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
