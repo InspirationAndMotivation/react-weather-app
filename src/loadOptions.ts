@@ -5,11 +5,23 @@ export type OptionType = {
   label: string;
 };
 
+const cities = [
+  'Wroclaw',
+  'New York',
+  'Calgary',
+  'Kyiv',
+  'Toronto',
+  'Ottawa',
+  'Dnipro',
+  'Warsaw',
+  'San Francisco',
+];
+
 const options: OptionType[] = [];
-for (let i = 0; i < 50; ++i) {
+for (let i = 0; i < cities.length; ++i) {
   options.push({
     value: i + 1,
-    label: `Option ${i + 1}`,
+    label: cities[i],
   });
 }
 

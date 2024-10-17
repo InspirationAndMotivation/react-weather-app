@@ -1,3 +1,8 @@
+export type Response = {
+  status: number;
+  message: string;
+};
+
 export type Weather = {
   coord: {
     lon: number;
@@ -46,6 +51,15 @@ export type Weather = {
   id: number;
   name: string;
   cod: number;
+};
+
+export type CityData = {
+  name: string;
+  latitude: number;
+  longitude: number;
+  country: string;
+  population: number;
+  is_capital: boolean;
 };
 
 export type CoordAndNumberOfTimestamps = {

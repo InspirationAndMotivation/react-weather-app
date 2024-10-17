@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosResponse } from 'axios';
-import { Weather } from '../types/Types';
-
-type Response = {
-  status: number;
-  message: string;
-};
+import { Weather, Response } from '../types/Types';
 
 type TodayWeather = {
   weather: Weather;
@@ -107,4 +102,11 @@ export const todayWeatherSlice = createSlice({
   },
 });
 
+export const {
+  fetchTodayWeatherByCity,
+  fetchTodayWeatherByCoords,
+  fetchWeatherForFewHoursByCoords,
+  fetchTodayWeatherSuccess,
+  fetchTodayWeatherError,
+} = todayWeatherSlice.actions;
 export default todayWeatherSlice.reducer;
